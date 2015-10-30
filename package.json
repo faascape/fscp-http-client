@@ -1,0 +1,34 @@
+{
+   "name": "fscp-http-client",
+   "version": "0.1.6",
+   "description": "simple http request client",
+   "keywords": [
+       "http"
+   ],
+
+   "main": "simple-http-requests.js",
+
+   "maintainers": [
+       {
+           "name": "Xavier Milliard",
+           "email": "xm@faascape.com"
+       } 
+   ],
+
+   "bugs": {
+       "mail": "support@faascape.com",
+       "url": "https://github.com/faascape/fscp-http-client/issues" 
+   },
+
+   "license": "MIT",
+
+   "repository": {
+           "type": "git",
+           "url": "git+ssh://git@github.com/faascape/fscp-http-client.git" 
+       },
+       
+   "scripts": {
+    "tests": "mocha tests/tests.js"
+   }
+
+}
