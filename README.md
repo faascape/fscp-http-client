@@ -47,7 +47,7 @@ myClient.doGet(null, '/', function(err, res, result) {
 
 var Client = require('fscp-http-client').Client;
 
-var client = new Client('www.siteusingtoken.net');
+var myClient = new Client('www.siteusingtoken.net');
 
 
 myClient.doGet('MY-TOKEN', '/', function(err, res, result) {
@@ -61,7 +61,7 @@ myClient.doGet('MY-TOKEN', '/', function(err, res, result) {
 
 var Client = require('fscp-http-client').Client;
 
-var client = new Client('www.siteusingtoken.net');
+var myClient = new Client('www.siteusingtoken.net');
 
 var payload = {
 	attr1:'value1',
@@ -83,7 +83,7 @@ myClient.doPost('MY-TOKEN', '/', null, payload, function(err, res, result) {
 
 var Client = require('fscp-http-client').Client;
 
-var client = new Client('www.siteusingtoken.net');
+var myClient = new Client('www.siteusingtoken.net');
 
 var payload = {
 	attr1:'value1',
