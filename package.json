@@ -1,12 +1,12 @@
 {
    "name": "fscp-http-client",
-   "version": "0.1.7",
+   "version": "0.1.8",
    "description": "simple http request client",
    "keywords": [
        "http"
    ],
 
-   "main": "simple-http-requests.js",
+   "main": "simple-http-client.js",
 
    "maintainers": [
        {
