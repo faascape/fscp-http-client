@@ -51,7 +51,7 @@ Client.prototype._doRequest = function(token, method, path, appHeaders, payload,
   }
 
   var dataToSend = typeof payload == 'object' ? JSON.stringify(payload) : payload;
-  if(dataToSend != '') {
+  if(dataToSend != '' && !options.headers['Content-Type']) {
     options.headers[ 'Content-Type'] = 'application/json';
   }
 
