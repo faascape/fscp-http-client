@@ -69,7 +69,7 @@ var payload = {
 };
 
 // default content type is application/json
-// javascript object payload are stringyfied
+// javascript object payload are stringified
  
 myClient.doPost('MY-TOKEN', '/', null, payload, function(err, res, result) {
 	console.log(result);
