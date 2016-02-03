@@ -28,7 +28,8 @@
        },
        
    "scripts": {
-    "tests": "mocha tests/tests.js"
+    "tests": "mocha tests/tests.js",
+    "dbg-tests": "mocha --debug-brk tests/tests.js"
    }
 
 }
