@@ -25,8 +25,21 @@ describe("test http client", function() {
 			
 		}).listen(8001, "127.0.0.1");});
 	
+
+	describe("GET / with endpoint", function() {
+        var client = new Client("http://127.0.0.1:8000");
+		it('should retrieve payload from get request', function(done1) {
+			client.doGet(null, '/', function(err, res, result) {
+				assert.equal(result, PAYLOAD1);
+				done1();
+			});			
+		});
+
+	});
+
+
 	
-	describe("GET /", function() {
+	describe("GET / with options", function() {
 		var client = new Client({
 			targetPort:8000
 		});
@@ -39,6 +52,9 @@ describe("test http client", function() {
 
 	});
 	
+    
+
+
 	
 	describe("POST /", function() {
 		var client = new Client({

@@ -1,5 +1,6 @@
 var http = require('http');
 var https = require('https');
+var url = require('url');
 
 
 var DEFAULT_TARGET_HOST = '127.0.0.1';
@@ -9,7 +10,10 @@ var DEFAULT_TARGET_PROTOCOL = 'http';
 var Client = exports.Client = function(options){
   var config = {};
   if(typeof options == 'string') {
-    config.targetHost = options;
+      var parsedUrl = url.parse(options);
+      config.targetHost = parsedUrl.hostname;
+      config.targetPort = parseInt(parsedUrl.port);
+      config.targetProtocol = parsedUrl.protocol;
   }
   else {
     config = options || { };
@@ -17,7 +21,7 @@ var Client = exports.Client = function(options){
   this.targetHost =  config.targetHost|| DEFAULT_TARGET_HOST;
   this.targetPort =  config.targetPort|| DEFAULT_TARGET_PORT;
   var protocol = config.targetProtocol || DEFAULT_TARGET_PROTOCOL;
-  this.targetProtocol = protocol == 'http' ? http : https;
+  this.targetProtocol = protocol == 'http'|| protocol == 'http:' ? http : https;
 };
 
 Client.prototype._doRequest = function(token, method, path, appHeaders, payload, cb) {
