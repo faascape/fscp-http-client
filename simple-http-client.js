@@ -12,7 +12,9 @@ var Client = exports.Client = function(options){
   if(typeof options == 'string') {
       var parsedUrl = url.parse(options);
       config.targetHost = parsedUrl.hostname;
-      config.targetPort = parseInt(parsedUrl.port);
+      if(parsedUrl.port) {
+        config.targetPort = parseInt(parsedUrl.port);
+      }
       config.targetProtocol = parsedUrl.protocol;
   }
   else {
