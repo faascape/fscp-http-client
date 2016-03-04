@@ -5,7 +5,6 @@ var stream = require('stream');
 
 
 var DEFAULT_TARGET_HOST = '127.0.0.1';
-var DEFAULT_TARGET_PORT = 80;
 var DEFAULT_TARGET_PROTOCOL = 'http';
 
 var Client = exports.Client = function(options){
@@ -22,7 +21,7 @@ var Client = exports.Client = function(options){
     config = options || { };
   }
   this.targetHost =  config.targetHost|| DEFAULT_TARGET_HOST;
-  this.targetPort =  config.targetPort|| DEFAULT_TARGET_PORT;
+  this.targetPort =  config.targetPort;
   var protocol = config.targetProtocol || DEFAULT_TARGET_PROTOCOL;
   this.targetProtocol = protocol == 'http'|| protocol == 'http:' ? http : https;
 };
@@ -77,9 +76,9 @@ Client.prototype._doRequest = function(token, method, path, appHeaders, payload,
   });
   
   if(payload instanceof stream.Readable) {
-      req.pipe(payload);
+      payload.pipe(req);
   } else {
-    var dataToSend = typeof payload == 'object' ? JSON.stringify(payload) :
+    var dataToSend = typeof payload == 'object' ? JSON.stringify(payload) : payload;
     req.end(dataToSend);    
   }
 
