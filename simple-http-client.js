@@ -1,6 +1,7 @@
 var http = require('http');
 var https = require('https');
 var url = require('url');
+var stream = require('stream');
 
 
 var DEFAULT_TARGET_HOST = '127.0.0.1';
@@ -56,8 +57,8 @@ Client.prototype._doRequest = function(token, method, path, appHeaders, payload,
     }
   }
 
-  var dataToSend = typeof payload == 'object' ? JSON.stringify(payload) : payload;
-  if(dataToSend != '' && !options.headers['Content-Type']) {
+  
+  if(payload && !options.headers['Content-Type']) {
     options.headers[ 'Content-Type'] = 'application/json';
   }
 
@@ -74,7 +75,14 @@ Client.prototype._doRequest = function(token, method, path, appHeaders, payload,
     console.log('err : ', err);
     cb(err);
   });
-  req.end(dataToSend);
+  
+  if(payload instanceof stream.Readable) {
+      req.pipe(payload);
+  } else {
+    var dataToSend = typeof payload == 'object' ? JSON.stringify(payload) :
+    req.end(dataToSend);    
+  }
+
 };
 
 Client.prototype.doPost = function(token, path, appHeaders, payload, cb) {
