@@ -97,3 +97,19 @@ myClient.doPost('MY-TOKEN', '/', { 'Accept':'application/json' }, payload, funct
 
 ```
 
+### POST some data from stream
+
+``` javascript
+
+var fs = require('fs');
+var Client = require('fscp-http-client').Client;
+
+var myClient = new Client('https://www.site.net:444');
+
+var is = fs.createReadStream('my-file');
+ 
+myClient.doPost('MY-TOKEN', '/', null, is, function(err, res, result) {
+	console.log(result);
+});
+
+```
