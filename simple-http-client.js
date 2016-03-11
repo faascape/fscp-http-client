@@ -51,18 +51,18 @@ Client.prototype._doRequest = function (token, method, path, appHeaders, payload
     };
 
     if (token) {
-        options.headers['Authorization'] = 'Bearer ' + token;
+        options.headers['authorization'] = 'Bearer ' + token;
     }
     if (appHeaders) {
         var propertyName;
         for (propertyName in appHeaders) {
-            options.headers[propertyName] = appHeaders[propertyName];
+            options.headers[propertyName.toLowerCase()] = appHeaders[propertyName];
         }
     }
 
 
-    if (payload && !options.headers['Content-Type']) {
-        options.headers['Content-Type'] = 'application/json';
+    if (payload && !options.headers['content-type']) {
+        options.headers['content-type'] = 'application/json';
     }
 
     var result = '';
