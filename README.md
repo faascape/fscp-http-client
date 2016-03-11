@@ -113,3 +113,21 @@ myClient.doPost('MY-TOKEN', '/', null, is, function(err, res, result) {
 });
 
 ```
+
+## pipe GET request result to stream
+
+``` javascript
+
+var fs = require('fs');
+var Client = require('fscp-http-client').Client;
+
+var myClient = new Client('https://www.site.net:444');
+
+var os = fs.createWriteStream('my-file-file');
+ 
+myClient.doGet2Stream('MY-TOKEN', '/', ws, function(err, res, result) {
+	console.log(result);
+});
+
+```
+
