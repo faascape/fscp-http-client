@@ -121,9 +121,11 @@ describe("test http client", function () {
             var ws = fs.createWriteStream('teststream1');
             client.doGet2Stream(null, '/', null, ws, function (err, res, result) {
                 ws.close();
-                var testContent = fs.readFileSync("teststream1");
-                assert.equal("teststream1", testContent);
-                done2();
+                var testContent = fs.readFile("teststream1", function (err, data) {
+                    assert.equal("teststream1", data);
+                    done2();
+                });
+
             });
         });
 
