@@ -1,7 +1,7 @@
 var assert = require('assert');
 var http = require('http');
 var fs = require('fs');
-var Client = require('../simple-http-client.js').Client;
+var Client = require('../lib/simple-http-client.js').Client;
 
 var PAYLOAD1 = "SERVER1";
 
