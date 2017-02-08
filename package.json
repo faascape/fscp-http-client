@@ -1,6 +1,6 @@
 {
    "name": "fscp-http-client",
-   "version": "0.2.4",
+   "version": "0.2.6",
    "description": "simple http request client",
    "keywords": [
        "http"
